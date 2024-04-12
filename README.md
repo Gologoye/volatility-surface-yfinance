@@ -18,7 +18,7 @@ This Python script generates a volatility surface for a given underlying asset u
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/votre_utilisateur/nom_depot.git
+    git clone https://github.com/Gologoye/volatility-surface-yfinance.git
     ```
 
 2. Install the required dependencies:
