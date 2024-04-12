@@ -46,7 +46,7 @@ This Python script generates a volatility surface for a given underlying asset u
 3. Click the "Generate" button to generate the volatility surface plot.
 
 ## Example
-![Exemple 1](examples/Vol_surface_example.jsp)
+![Exemple 1](examples/Vol_surface_example.jpg)
 ![Exemple 2](examples/Vol_surface_settings_example.jpg)
 
 ## Note
