@@ -14,7 +14,7 @@ warnings.filterwarnings('ignore', 'The iteration is not making good progress')
 
 today = datetime.now()
 
-def vol_nappe(sj, r, our_type, xtol, maxfev) : 
+def vol_nappe(sj, r, our_type, sigma, xtol, maxfev) : 
     sj = sj # sous jacent 
     r = r  # Taux sans risque
 
@@ -67,7 +67,7 @@ def vol_nappe(sj, r, our_type, xtol, maxfev) :
     for index, value in df_option_data[our_type].items():
         T = index[0] / 365
         K = index[1]
-        sigma0 = 0.60 # valeur de sigma 
+        sigma0 = sigma # valeur de sigma 
         imp_vol = fsolve(BSM, sigma0, args=(S0, K, value, T, r, our_type), xtol=xtol, maxfev=maxfev)
         imp_vol_scalar = float(imp_vol[0])
         imp_vol_df.append(imp_vol_scalar)
@@ -94,6 +94,7 @@ def generate_volatility_surface():
     sous_jacent = sous_jacent_entry.get()
     r_value = float(r_entry.get())
     our_type_value = our_type_entry.get()
+    sigma_value = float(sigma_entry.get())
     xtol_value = float(xtol_entry.get())
     maxfev_value = int(maxfev_entry.get())
     
@@ -103,7 +104,7 @@ def generate_volatility_surface():
     if our_type_value not in ['CALL', 'PUT']:
         messagebox.showerror("Error", "Invalid option type. Choose 'CALL' or 'PUT'.")
         return
-    vol_nappe(sous_jacent, r_value, our_type_value, xtol_value, maxfev_value)
+    vol_nappe(sous_jacent, r_value, our_type_value, sigma_value, xtol_value, maxfev_value)
 
 # Créer la fenêtre principale
 root = tk.Tk()
@@ -118,6 +119,9 @@ r_entry = tk.Entry(root)
 
 our_type_label = tk.Label(root, text="Option Type (CALL/PUT):")
 our_type_entry = tk.Entry(root)
+
+sigma_label = tk.Label(root, text="Sigma:")
+sigma_entry = tk.Entry(root)
 
 xtol_label = tk.Label(root, text="Tolerance (xtol):")
 xtol_entry = tk.Entry(root)
@@ -137,14 +141,16 @@ r_entry.grid(row=1, column=1, padx=10, pady=10)
 our_type_label.grid(row=2, column=0, padx=10, pady=10)
 our_type_entry.grid(row=2, column=1, padx=10, pady=10)
 
-xtol_label.grid(row=3, column=0, padx=10, pady=10)
-xtol_entry.grid(row=3, column=1, padx=10, pady=10)
+sigma_label.grid(row=3, column=0, padx=10, pady=10)
+sigma_entry.grid(row=3, column=1, padx=10, pady=10)
 
-maxfev_label.grid(row=4, column=0, padx=10, pady=10)
-maxfev_entry.grid(row=4, column=1, padx=10, pady=10)
+xtol_label.grid(row=4, column=0, padx=10, pady=10)
+xtol_entry.grid(row=4, column=1, padx=10, pady=10)
 
-generate_button.grid(row=5, column=0, columnspan=2, padx=10, pady=10)
+maxfev_label.grid(row=5, column=0, padx=10, pady=10)
+maxfev_entry.grid(row=5, column=1, padx=10, pady=10)
+
+generate_button.grid(row=6, column=0, columnspan=2, padx=10, pady=10)
 
 # Lancer la boucle principale
 root.mainloop()
-
