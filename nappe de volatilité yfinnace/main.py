@@ -19,7 +19,8 @@ def vol_nappe(sj, r, our_type, sigma, xtol, maxfev) :
     r = r  # Taux sans risque
 
     # Télécharger les données historiques pour obtenir S0
-    stock_data = yf.download(sj, start='2023-01-01', end='2024-04-10')
+    start_date = today.strftime('%Y-%m-%d')
+    stock_data = yf.download(sj, start=start_date)
     S0 = stock_data['Close'].iloc[-1]
 
     option_data = yf.Ticker(sj)
