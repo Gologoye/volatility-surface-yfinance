@@ -47,7 +47,6 @@ This Python script generates a volatility surface for a given underlying asset u
 
 ## Example
 
-![Volatility Surface](volatility_surface.png)
 
 ## Note
 
@@ -56,6 +55,4 @@ This Python script generates a volatility surface for a given underlying asset u
 - The BSM model is used to calculate implied volatility.
 - The GUI is implemented using Tkinter.
 
-## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
