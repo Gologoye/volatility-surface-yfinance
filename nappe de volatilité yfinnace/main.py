@@ -48,8 +48,10 @@ def vol_nappe(sj, r, our_type, sigma, xtol, maxfev) :
 
     df_option_data['days_to_expiry'] = df_option_data['expiration_date']
     df_option_data['days_to_expiry'] = pd.to_datetime(df_option_data['days_to_expiry'])
+    
     df_option_data['expiration_date'] = (df_option_data['days_to_expiry'] - today).dt.days
 
+    df_option_data = df_option_data[df_option_data['expiration_date'] > 0]
     df_option_data = df_option_data[df_option_data['expiration_date'] < 100]  # Filter expiration dates pour que l'expiration ne soient pas trop lointaine
     df_option_data = df_option_data.set_index(['expiration_date', 'strike', 'type']).sort_index()
 
@@ -154,3 +156,4 @@ generate_button.grid(row=6, column=0, columnspan=2, padx=10, pady=10)
 
 # Lancer la boucle principale
 root.mainloop()
+
