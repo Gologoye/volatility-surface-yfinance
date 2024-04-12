@@ -36,7 +36,7 @@ This Python script generates a volatility surface for a given underlying asset u
     ```
 
 2. Enter the required parameters in the GUI window:
-   - Underlying Asset: Enter the ticker symbol of the underlying asset.
+   - Underlying Asset: Enter the ticker symbol of the underlying asset, to find the right ticker, look on finance.yahoo.com..
    - Risk-Free Rate: Enter the risk-free rate (decimal).
    - Option Type (CALL/PUT): Enter the type of option to analyze (CALL or PUT).
    - Sigma: Enter the initial guess for volatility (decimal).
