@@ -32,7 +32,7 @@ This Python script generates a volatility surface for a given underlying asset u
 1. Run the script:
 
     ```bash
-    python volatility_surface.py
+    python volatility_surface\main.py
     ```
 
 2. Enter the required parameters in the GUI window:
